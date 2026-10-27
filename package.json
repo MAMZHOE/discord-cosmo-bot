@@ -1,0 +1,22 @@
+{
+  "name": "discord-cosmo-bot",
+  "version": "1.0.0",
+  "description": "Discord bot that responds to Hey Cosmo requests and can send anonymous messages to a channel.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "cosmo",
+    "openai"
+  ],
+  "author": "MAMZHOE",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.5",
+    "openai": "^4.41.1"
+  }
+}
