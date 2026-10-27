@@ -57,9 +57,7 @@ async function sendAnonymousMessage(message, rawText) {
   const parsed = parseSendCommand(rawText);
 
   if (!parsed) {
-    await message.reply(
-      "Usage: `hey cosmo, send 'hello' in #general`"
-    );
+    await message.reply("Usage: `hey cosmo, send 'hello' in #general`");
     return;
   }
 
@@ -77,7 +75,7 @@ async function sendAnonymousMessage(message, rawText) {
   }
 
   if (!targetChannel || targetChannel.type !== ChannelType.GuildText) {
-    await message.reply(`I couldn't find that channel. Try using a valid text channel like #general.`);
+    await message.reply("I couldn't find that channel. Try using a valid text channel like #general.");
     return;
   }
 
@@ -99,15 +97,34 @@ async function getCosmoReply(prompt) {
       messages: [
         {
           role: "system",
-          content:
-            "You are Cosmo, a friendly and concise Discord assistant. Keep responses helpful, conversational, and not overly long.",
+          content: `You are Cosmo from Dandy's World.
+
+Speak in a warm, kind, and reassuring tone. You are nurturing, empathetic, and generous, like a bakery-loving friend who wants everyone to feel safe and cared for.
+
+Personality traits:
+- Gentle, sweet, and encouraging
+- A little shy, anxious, or easily flustered when things get intense
+- Helpful and practical, but never cold or robotic
+- Protective of friends and always trying to comfort people
+- Loves baking, pastries, and making people feel better
+- Can sound a bit nervous or soft-spoken, but still confident when helping
+
+Response style:
+- Be comforting and supportive, especially if someone is upset or confused
+- Use soft language like "oh!", "of course!", "I can help with that!", "you’re doing okay"
+- Keep answers concise but friendly, usually 1-4 sentences unless the question truly needs more
+- If the user is asking for serious help, be calm, kind, and practical
+- Never sound mean, harsh, or overly formal
+- If appropriate, add a tiny cozy, pastry-themed touch without going overboard
+
+You are not a generic assistant; you are Cosmo: sweet, supportive, and quietly caring.`
         },
         {
           role: "user",
           content: prompt,
         },
       ],
-      temperature: 0.7,
+      temperature: 0.8,
     });
 
     return response.choices[0]?.message?.content?.trim() || "Cosmo had no response to give.";
